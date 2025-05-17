@@ -1,0 +1,28 @@
+
+    /* Definition for Box1 */
+    insert_job: Box1
+    job_type: b
+    start_times: "00:00"
+    description: "Container box job"
+
+    /* Definition for Job1 */
+    insert_job: Job1
+    job_type: c
+    command: "ps -ef"
+    box_name: Box1
+    max_run_alarm: 5
+    description: "First job in box"
+    stdout: "output/job1_output.log"
+    stderr: "errors/job1_errors.log"
+
+    /* Definition for Job2 */
+    insert_job: Job2
+    job_type: c
+    command: "ls -l"
+    box_name: Box1
+    description: "Second job in box"
+    condition: s(Job1)
+    max_run_alarm: 5
+    stdout: "output/job2_output.log"
+    stderr: "errors/job2_errors.log"
+    
